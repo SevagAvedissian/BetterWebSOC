@@ -5,33 +5,82 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: "",
+      department: "",
+      teacher: "",
+      class: "",
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.handleChange = this.handleTeacherChange.bind(this);
+    this.handleSubmit = this.handleTeacherSubmit.bind(this);
+
+    this.handleDepartmentChange = this.handleDepartmentChange.bind(this);
+    this.handleDepartmentSubmit = this.handleDepartmentSubmit.bind(this);
+
+    this.handleClassChange = this.handleClassChange.bind(this);
+    this.handleClassSubmit = this.handleClassSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleDepartmentChange(event) {
+    this.setState({ department: event.target.department });
   }
-  handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
+  handleDepartmentSubmit(event) {
+    alert("A dep was submitted: " + this.state.department);
+    event.preventDefault();
+  }
+
+  handleTeacherChange(event) {
+    this.setState({ teacher: event.target.teacher });
+  }
+  handleTeacherSubmit(event) {
+    alert("A teacher was submitted: " + this.state.teacher);
+    event.preventDefault();
+  }
+
+  handleClassChange(event) {
+    this.setState({ department: event.target.class });
+  }
+  handleClassSubmit(event) {
+    alert("A class was submitted: " + this.state.class);
     event.preventDefault();
   }
 
   render() {
     return (
       <div className="container2">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleDepartmentSubmit}>
           <label>
-            Name:
+            Department:
             <input
               type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />{" "}
+              teacher={this.state.department}
+              onChange={this.handleDepartmentChange}
+            />
           </label>
-          <input type="submit" value="Submit" />
+          <input type="submit" department="Submit" />
+        </form>
+
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Teacher:
+            <input
+              type="text"
+              teacher={this.state.teacher}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" teacher="Submit" />
+        </form>
+
+        <form onSubmit={this.handleClassSubmit}>
+          <label>
+            Class:
+            <input
+              type="text"
+              teacher={this.state.class}
+              onChange={this.handleClassChange}
+            />
+          </label>
+          <input type="submit" class="Submit" />
         </form>
       </div>
     );
