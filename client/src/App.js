@@ -11,43 +11,37 @@ class App extends Component {
     };
 
     this.handleChange = this.handleTeacherChange.bind(this);
-    this.handleSubmit = this.handleTeacherSubmit.bind(this);
-
     this.handleDepartmentChange = this.handleDepartmentChange.bind(this);
-    this.handleDepartmentSubmit = this.handleDepartmentSubmit.bind(this);
-
     this.handleClassChange = this.handleClassChange.bind(this);
-    this.handleClassSubmit = this.handleClassSubmit.bind(this);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleDepartmentChange(event) {
     this.setState({ department: event.target.department });
   }
-  handleDepartmentSubmit(event) {
-    alert("A dep was submitted: " + this.state.department);
-    event.preventDefault();
-  }
 
   handleTeacherChange(event) {
     this.setState({ teacher: event.target.teacher });
-  }
-  handleTeacherSubmit(event) {
-    alert("A teacher was submitted: " + this.state.teacher);
-    event.preventDefault();
   }
 
   handleClassChange(event) {
     this.setState({ department: event.target.class });
   }
-  handleClassSubmit(event) {
-    alert("A class was submitted: " + this.state.class);
+  handleSubmit(event) {
+    alert(
+      "submitted all three" +
+        this.state.class +
+        this.state.department +
+        this.state.teacher
+    );
     event.preventDefault();
   }
 
   render() {
     return (
       <div className="container2">
-        <form onSubmit={this.handleDepartmentSubmit}>
+        <form onSubmit={this.handleSubmit}>
           <label>
             Department:
             <input
@@ -56,10 +50,7 @@ class App extends Component {
               onChange={this.handleDepartmentChange}
             />
           </label>
-          <input type="submit" department="Submit" />
-        </form>
 
-        <form onSubmit={this.handleSubmit}>
           <label>
             Teacher:
             <input
@@ -68,10 +59,7 @@ class App extends Component {
               onChange={this.handleChange}
             />
           </label>
-          <input type="submit" teacher="Submit" />
-        </form>
 
-        <form onSubmit={this.handleClassSubmit}>
           <label>
             Class:
             <input
@@ -80,7 +68,7 @@ class App extends Component {
               onChange={this.handleClassChange}
             />
           </label>
-          <input type="submit" class="Submit" />
+          <input type="submit" department="Submit" />
         </form>
       </div>
     );
