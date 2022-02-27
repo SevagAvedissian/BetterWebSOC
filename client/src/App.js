@@ -28,16 +28,16 @@ class App extends Component {
   }
 
   handleClassChange(event) {
-    this.setState({ classCode: event.target.class.value });
+    this.setState({ class: event.target.class.value });
   }
 
   handleTermChange(event) {
-    this.setState({ classCode: event.target.term.value });
+    this.setState({ term: event.target.term.value });
   }
 
   handleSubmit(event) {
     alert(
-      "submitted all three" +
+      "submitted all four" +
         this.state.class +
         this.state.department +
         this.state.teacher +
@@ -73,7 +73,7 @@ class App extends Component {
             Class:
             <input
               type="text"
-              classCode={this.state.class}
+              class={this.state.class}
               onChange={this.handleClassChange}
             />
           </label>
