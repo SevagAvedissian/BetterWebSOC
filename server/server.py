@@ -1,14 +1,16 @@
-from flask import Flask
+from flask import Flask, request
+from flask_cors import CORS, cross_origin
 import requests
 import json
-from ratemyprof import *
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
+CORS(app)
 
-@app.route("/members", methods=['POST'])
+@app.route("/search", methods=['POST'])
 def members():
     search_input = request.get_json()
+    print(search_input)
     term = "2021 Fall"
     dep = "I%26C SCI"
     param = {"term" : term, "department" : dep}
@@ -25,7 +27,7 @@ def members():
             rating = soup.find("div", class_="RatingValue__Numerator-qw8sqy-2 liyUjw")
             print(rating.text)
     #return prof_data.text
-    return search_input
+    return "{\"prof\": \"thornton\"}"
     #return requests.get("https://api.peterportal.org/rest/v0/schedule/soc?term="+term+"&department="+dep).json()
 
 if __name__ == "__main__":
