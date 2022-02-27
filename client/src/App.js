@@ -54,7 +54,7 @@ class App extends Component {
             Department:
             <input
               type="text"
-              department={this.state.department.value}
+              department={this.state.department}
               onChange={this.handleDepartmentChange}
             />
           </label>
@@ -64,7 +64,7 @@ class App extends Component {
             Teacher:
             <input
               type="text"
-              teacher={this.state.teacher.value}
+              teacher={this.state.teacher}
               onChange={this.handleChange}
             />
           </label>
@@ -73,7 +73,7 @@ class App extends Component {
             Class:
             <input
               type="text"
-              classCode={this.state.class.value}
+              classCode={this.state.class}
               onChange={this.handleClassChange}
             />
           </label>
